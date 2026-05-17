@@ -263,10 +263,41 @@ img {
   display: none;
   background: none;
   border: none;
-  color: var(--color-light);
-  font-size: 1.5rem;
   cursor: pointer;
-  transition: color var(--transition-normal);
+  width: 30px;
+  height: 24px;
+  position: relative;
+  z-index: 101;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mobile-menu-btn .bar {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-light);
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+  transform-origin: left center;
+}
+
+.navbar.scrolled .mobile-menu-btn .bar {
+  background-color: var(--color-dark);
+}
+
+.mobile-menu-btn.active .bar:nth-child(1) {
+  transform: rotate(45deg);
+  width: 34px;
+}
+
+.mobile-menu-btn.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-btn.active .bar:nth-child(3) {
+  transform: rotate(-45deg);
+  width: 34px;
 }
 
 /* ==========================================================================
@@ -638,7 +669,7 @@ img {
 
 @media (max-width: 768px) {
   .mobile-menu-btn {
-    display: block;
+    display: flex;
   }
   
   .nav-links {
@@ -687,13 +718,17 @@ img {
                 <li><a href="#projects">Our Work</a></li>
                 <li><a href="#contact" class="btn btn-primary" style="padding: 0.5rem 1.5rem;">Contact Us</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <header class="hero" id="home">
-        <div class="hero-bg" style="background-image: url('IMG_5925.jpeg');"></div>
+        <div class="hero-bg" style="background-image: url('HERO_BACKGROUND_PHOTO_NAME.jpg');"></div>
         <div class="container">
             <div class="hero-content reveal">
                 <h1 class="heading-xl">Building <span>Excellence.</span></h1>
@@ -862,6 +897,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileMenuBtn && navLinks) {
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
         });
 
         // Close menu when clicking a link
@@ -869,6 +905,7 @@ document.addEventListener('DOMContentLoaded', () => {
         links.forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
             });
         });
     }
@@ -919,4 +956,5 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
 
