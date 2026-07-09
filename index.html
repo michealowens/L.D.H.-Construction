@@ -5,19 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LDH Developments | We Exist To Build Great Things</title>
     
-    <!-- Google Fonts for typography mimicking the DPR feel -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     
-    <!-- Link to custom styles -->
     <style>
 /* ==========================================================================
    Design Tokens & Variables
    ========================================================================== */
 :root {
-  /* Colors - DPR Inspired */
-  --color-primary: #D32F2F; /* Bold Red */
+  /* Colors */
+  --color-primary: #D32F2F; 
   --color-primary-dark: #B71C1C;
   --color-dark: #121212;
   --color-dark-lighter: #1E1E1E;
@@ -55,6 +53,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -198,7 +197,7 @@ img {
 }
 
 .navbar.scrolled .logo,
-.navbar.scrolled .nav-links a,
+.navbar.scrolled .nav-links a:not(.btn-primary),
 .navbar.scrolled .mobile-menu-btn {
   color: var(--color-dark);
 }
@@ -229,6 +228,7 @@ img {
   display: flex;
   gap: var(--space-md);
   list-style: none;
+  align-items: center;
 }
 
 .nav-links a {
@@ -241,7 +241,7 @@ img {
   transition: color var(--transition-normal);
 }
 
-.nav-links a::after {
+.nav-links a:not(.btn-primary)::after {
   content: '';
   position: absolute;
   bottom: -4px;
@@ -254,7 +254,7 @@ img {
   transition: transform var(--transition-fast);
 }
 
-.nav-links a:hover::after {
+.nav-links a:not(.btn-primary):hover::after {
   transform: scaleX(1);
   transform-origin: left;
 }
@@ -320,7 +320,6 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('unnamed.jpg'); /* Largest image */
   background-size: cover;
   background-position: center;
   opacity: 0.5;
@@ -484,7 +483,7 @@ img {
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: 0; /* Flush like DPR style */
+  gap: 0;
 }
 
 .portfolio-item {
@@ -589,9 +588,15 @@ img {
   opacity: 0.8;
 }
 
-.contact-card p {
+.contact-card p, .contact-card a {
   font-size: 1.2rem;
   font-weight: 600;
+  color: var(--color-light);
+  transition: opacity var(--transition-fast);
+}
+
+.contact-card a:hover {
+  opacity: 0.8;
 }
 
 /* Footer */
@@ -676,9 +681,11 @@ img {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 60%;
+    width: 75%; 
+    max-width: 350px;
     height: 100vh;
     background-color: var(--color-dark);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5); 
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -688,6 +695,18 @@ img {
   
   .nav-links.active {
     right: 0;
+  }
+  
+  .navbar.scrolled .nav-links a:not(.btn-primary) {
+    color: var(--color-light); 
+  }
+
+  .navbar.scrolled .nav-links a.btn-primary {
+    color: var(--color-light); 
+  }
+  
+  .navbar.scrolled .mobile-menu-btn.active .bar {
+    background-color: var(--color-light);
   }
   
   .hero-content h1 {
@@ -702,12 +721,10 @@ img {
     grid-template-columns: 1fr;
   }
 }
-
 </style>
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="container">
             <a href="#" class="logo">
@@ -727,7 +744,6 @@ img {
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <header class="hero" id="home">
         <div class="hero-bg" style="background-image: url('IMG_5959.jpeg');"></div>
         <div class="container">
@@ -742,7 +758,6 @@ img {
         </div>
     </header>
 
-    <!-- About Section -->
     <section class="section section-gray" id="about">
         <div class="container">
             <div class="about-grid">
@@ -764,14 +779,12 @@ img {
                     </div>
                 </div>
                 <div class="about-image reveal delay-1">
-                    <!-- PASTE ABOUT PHOTO NAME HERE -->
                     <img src="IMG_5925.jpeg" alt="LDH Developments Team at Work">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio / Our Work -->
     <section class="section" id="projects">
         <div class="container">
             <div class="section-header reveal">
@@ -782,9 +795,7 @@ img {
         </div>
         
         <div class="portfolio-grid">
-            <!-- Project 1 -->
             <div class="portfolio-item reveal">
-                <!-- PASTE PORTFOLIO PHOTO 1 HERE -->
                 <img src="IMG_5957.jpeg" alt="Construction Project 1">
                 <div class="portfolio-overlay">
                     <h3>Project Overview</h3>
@@ -792,9 +803,7 @@ img {
                 </div>
             </div>
             
-            <!-- Project 2 -->
             <div class="portfolio-item reveal delay-1">
-                <!-- PASTE PORTFOLIO PHOTO 2 HERE -->
                 <img src="IMG_5998.jpeg" alt="Construction Project 2">
                 <div class="portfolio-overlay">
                     <h3>Structural Framing</h3>
@@ -802,9 +811,7 @@ img {
                 </div>
             </div>
             
-            <!-- Project 3 -->
             <div class="portfolio-item reveal delay-2">
-                <!-- PASTE PORTFOLIO PHOTO 3 HERE -->
                 <img src="IMG_6006.jpeg" alt="Construction Project 3">
                 <div class="portfolio-overlay">
                     <h3>Custom Build</h3>
@@ -812,9 +819,7 @@ img {
                 </div>
             </div>
 
-            <!-- Project 4 -->
             <div class="portfolio-item reveal">
-                <!-- PASTE PORTFOLIO PHOTO 4 HERE -->
                 <img src="IMG_5962.jpeg" alt="Construction Project 4">
                 <div class="portfolio-overlay">
                     <h3>Renovation Works</h3>
@@ -822,9 +827,7 @@ img {
                 </div>
             </div>
 
-            <!-- Project 5 -->
             <div class="portfolio-item reveal delay-1">
-                <!-- PASTE PORTFOLIO PHOTO 5 HERE -->
                 <img src="IMG_5996.jpeg" alt="Construction Project 5">
                 <div class="portfolio-overlay">
                     <h3>Exterior Finish</h3>
@@ -834,7 +837,6 @@ img {
         </div>
     </section>
 
-    <!-- Call to Action / Contact -->
     <section class="cta-section" id="contact">
         <div class="container">
             <div class="cta-content reveal">
@@ -844,11 +846,11 @@ img {
                 <div class="contact-info-grid">
                     <div class="contact-card">
                         <h4>Call Us</h4>
-                        <p>(417-991-9008)</p>
+                        <p><a href="tel:+14179919008">(417) 991-9008</a></p>
                     </div>
                     <div class="contact-card">
                         <h4>Email</h4>
-                        <p>LoganHarrison72775@gmail.com</p>
+                        <p><a href="mailto:LoganHarrison72775@gmail.com">LoganHarrison72775@gmail.com</a></p>
                     </div>
                     <div class="contact-card">
                         <h4>Location</h4>
@@ -859,7 +861,6 @@ img {
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -877,7 +878,7 @@ img {
                 </div>
                 <div class="footer-col">
                     <h4>Connect</h4>
-                    <a href="#">Facebook</a>
+                    <a href="https://www.facebook.com/share/18ZTtQ2zkv/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Facebook</a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -887,7 +888,6 @@ img {
         </div>
     </footer>
 
-    <!-- Link to Custom Script -->
     <script>
 document.addEventListener('DOMContentLoaded', () => {
     // Mobile Menu Toggle
@@ -932,8 +932,6 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                // Optional: Stop observing once animated
-                // observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
@@ -952,7 +950,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 100);
 });
-
 </script>
 </body>
 </html>
